@@ -5,14 +5,14 @@ import { userReducer } from "./reducers/userReducer";
 //global state types
 interface AppStore {
   user: UserState;
-  categories: any;
-  records: any;
+  // categories: any;
+  // records: any;
 }
 
 const rootReducer = combineReducers<AppStore>({
   user: userReducer,
-  categories: () => {},
-  records: () => {},
+  // categories: () => {},
+  // records: () => {},
 });
 
 export default rootReducer;
