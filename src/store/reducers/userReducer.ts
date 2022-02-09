@@ -1,4 +1,4 @@
-import { UserState } from "../../types/user";
+import { UserAction, UserState } from "../../types/user";
 
 //check return data from  Api   to define interface
 /* my response is : 
@@ -12,6 +12,6 @@ import { UserState } from "../../types/user";
 
 //go types folder and define this interface
 
-export const userReducer = (state: UserState, action) => {
+export const userReducer = (state: UserState, action: UserAction) => {
   return state;
 };
