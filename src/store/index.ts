@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
+import { UserState } from "../types/user";
+import { userReducer } from "./reducers/userReducer";
 
 //global state types
 interface AppStore {
-  user: any;
+  user: UserState;
   categories: any;
   records: any;
 }
 
 const rootReducer = combineReducers<AppStore>({
-  user: () => {},
+  user: userReducer,
   categories: () => {},
   records: () => {},
 });
