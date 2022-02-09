@@ -1,4 +1,4 @@
-import { UserAction, UserState } from "../../types/user";
+import { User, UserAction, UserState } from "../../types/user";
 
 //check return data from  Api   to define interface
 /* my response is : 
@@ -12,6 +12,18 @@ import { UserAction, UserState } from "../../types/user";
 
 //go types folder and define this interface
 
-export const userReducer = (state: UserState, action: UserAction) => {
+//define a default state
+
+const defaultState: UserState = {
+  // give it to state then my app start with this object
+  data: {} as User, // data:{} if use this format get an error because it expect user informations
+  loading: false,
+  error: "",
+};
+
+export const userReducer = (
+  state: UserState = defaultState,
+  action: UserAction
+) => {
   return state;
 };
