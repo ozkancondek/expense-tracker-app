@@ -1,7 +1,15 @@
 import React from "react";
-import { Form, Input, InputNumber, Button } from "antd";
+import { Form, Input } from "antd";
+import api from "../utils/api";
+import { useNavigate } from "react-router-dom";
+import { message, Button } from "antd";
+
+const showError = (errorMessage: string) => {
+  message.error(errorMessage);
+};
 
 function SignUp() {
+  const navigate = useNavigate();
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -17,8 +25,16 @@ function SignUp() {
     },
   };
 
-  const onFinish = (values: any) => {
-    console.log(values);
+  //make post request when user entered all of requored data
+  const onFinish = async (values: any) => {
+    try {
+      //send values as payload
+      await api.post("/users/register", values);
+      navigate("/login");
+    } catch (error) {
+      console.log({ error });
+      showError((error as any).response.data.errorMessage);
+    }
   };
   return (
     <div>
@@ -28,6 +44,9 @@ function SignUp() {
         onFinish={onFinish}
         validateMessages={validateMessages}
       >
+        <h2 style={{ textAlign: "center", marginBottom: 40 }}>
+          Register for an acoount
+        </h2>
         <Form.Item
           name="username"
           label="Username"
