@@ -1,27 +1,40 @@
 import { Form, Input, Button } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { AppState } from "../store";
+import { login } from "../store/actions/useractions";
+import { LoginForm } from "../types/user";
 import api from "../utils/api";
 
 import showError from "../utils/showError";
+import { showSuccess } from "../utils/showSuccess";
 
 function Login() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const onFinish = async (values: any) => {
-    try {
-      //send values as payload
-      await api.post("/users/login", values);
-      navigate("/");
-    } catch (error) {
-      console.log({ error });
-      showError((error as any).response.data.errorMessage);
-    }
-  };
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state: AppState) => state.user);
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-    showError(errorInfo);
+  const onFinish = (values: LoginForm) => {
+    dispatch(login(values));
   };
+  //show me error
+  useEffect(() => {
+    error && showError(error);
+  }, [error]);
+
+  //if logged in, give me message
+  useEffect(() => {
+    data.username && showSuccess("You have successfully logged in!");
+  }, [data.username]);
+
+  //go to main page if i logged in before
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, [data]);
 
   return (
     <Form
@@ -30,7 +43,7 @@ function Login() {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      /*  onFinishFailed={onFinishFailed} */
       autoComplete="off"
     >
       <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please Login</h2>

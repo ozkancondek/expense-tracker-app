@@ -20,10 +20,20 @@ const defaultState: UserState = {
   loading: false,
   error: "",
 };
+const userReducer = (state: UserState = defaultState, action: UserAction) => {
+  switch (action.type) {
+    case "LOGIN_START":
+      return { ...state, loading: true, error: "" };
 
-export const userReducer = (
-  state: UserState = defaultState,
-  action: UserAction
-) => {
-  return state;
+    case "LOGIN_SUCCESS":
+      return { ...state, loading: false, data: action.payload };
+
+    case "LOGIN_ERROR":
+      return { ...state, loading: false, error: "Login failed." };
+
+    default:
+      return state;
+  }
 };
+
+export default userReducer;
