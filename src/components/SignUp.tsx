@@ -2,11 +2,9 @@ import React from "react";
 import { Form, Input } from "antd";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
-import { message, Button } from "antd";
-
-const showError = (errorMessage: string) => {
-  message.error(errorMessage);
-};
+import { Button } from "antd";
+import showError from "../utils/showError";
+import { showSuccess } from "../utils/showSuccess";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -31,6 +29,7 @@ function SignUp() {
       //send values as payload
       await api.post("/users/register", values);
       navigate("/login");
+      showSuccess("You registered successfully");
     } catch (error) {
       console.log({ error });
       showError((error as any).response.data.errorMessage);
