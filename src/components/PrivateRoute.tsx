@@ -1,23 +1,15 @@
 import { Navigate, Route, RouteProps } from "react-router-dom";
 
-interface PrivateRouteProps extends RouteProps {
-  component: React.FC<any>;
-}
+interface PrivateRouteProps extends RouteProps {}
 
-function PrivateRoute({ component: Component, ...theRest }: PrivateRouteProps) {
-  return (
-    <Route
-      {...theRest}
-      children={(props: any) => {
-        const token = localStorage.getItem("token");
-
-        if (token) {
-          return <Component {...props} />;
-        }
-        return <Navigate to="/login" />;
-      }}
-    />
-  );
+function PrivateRoute({ element: Component }: PrivateRouteProps) {
+  // const token  = localStorage.getItem("token");
+  const token = false;
+  if (!token) {
+    console.log("ozkan");
+    return <Route element={<Navigate to="/login" />} />;
+  }
+  return <Route element={<Navigate to="/login" />} />;
 }
 
 export default PrivateRoute;

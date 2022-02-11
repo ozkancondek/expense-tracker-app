@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppState } from "../store";
-import { login } from "../store/actions/useractions";
+
+import { login } from "../store/actions/userActions";
 import { LoginForm } from "../types/user";
 import api from "../utils/api";
 

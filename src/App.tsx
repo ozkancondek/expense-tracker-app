@@ -1,11 +1,24 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import { Layout, Menu, Breadcrumb } from "antd";
 import Login from "./components/Login";
+
 const { Header, Content, Footer } = Layout;
 
+const privateComponent = {
+  categories: <Login />,
+};
+
 function App() {
+  const renderPrivate = (path: keyof typeof privateComponent) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      return <Route path={path} element={privateComponent[path]} />;
+    }
+    return <Navigate to="/" />;
+  };
+  const token = false;
   return (
     <Layout>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
@@ -28,6 +41,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          {renderPrivate("categories")}
         </Routes>
       </Content>
       <Footer style={{ textAlign: "center" }}>
