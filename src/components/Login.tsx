@@ -6,7 +6,6 @@ import { AppState } from "../store";
 
 import { login } from "../store/actions/userActions";
 import { LoginForm } from "../types/user";
-import api from "../utils/api";
 
 import showError from "../utils/showError";
 import { showSuccess } from "../utils/showSuccess";
@@ -14,7 +13,7 @@ import { showSuccess } from "../utils/showSuccess";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state: AppState) => state.user);
+  const { data, error } = useSelector((state: AppState) => state.user);
 
   const onFinish = (values: LoginForm) => {
     dispatch(login(values));
@@ -35,7 +34,7 @@ function Login() {
     if (token) {
       navigate("/");
     }
-  }, [data]);
+  }, [data, navigate]);
 
   return (
     <Form

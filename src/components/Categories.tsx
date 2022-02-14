@@ -1,14 +1,4 @@
-import {
-  Button,
-  Form,
-  Input,
-  Modal,
-  Select,
-  Space,
-  Spin,
-  Table,
-  Tag,
-} from "antd";
+import { Button, Form, Input, Modal, Select, Space, Table, Tag } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,9 +21,7 @@ const emptyForm: CategoryForm = {
 };
 
 function Categories() {
-  const { data, loading, error } = useSelector(
-    (state: AppState) => state.categories
-  );
+  const { data, loading } = useSelector((state: AppState) => state.categories);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mode, setMode] = useState<Mode>("new");
@@ -111,7 +99,7 @@ function Categories() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <React.Fragment>

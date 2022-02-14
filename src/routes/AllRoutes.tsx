@@ -1,12 +1,13 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Categories from "../components/Categories";
 import Login from "../components/Login";
+
 import SignUp from "../components/SignUp";
 
-const privateComponent = {
-  categories: <Categories />,
-};
+// const privateComponent = {
+//   categories: <Categories />,
+// };
 
 export const AllRoutes = () => {
   /*  const renderPrivate = (path: keyof typeof privateComponent) => {

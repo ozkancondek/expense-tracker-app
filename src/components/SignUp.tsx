@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import React from "react";
 import { Form, Input } from "antd";
 import api from "../utils/api";
