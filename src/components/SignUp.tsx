@@ -27,7 +27,7 @@ function SignUp() {
   const onFinish = async (values: any) => {
     try {
       //send values as payload
-      await api.post("/users/register", values);
+      await api().post("/users/register", values);
       navigate("/login");
       showSuccess("You registered successfully");
     } catch (error) {
