@@ -99,7 +99,7 @@ function Records() {
         return (
           <>
             {updatedAtObj.toLocaleDateString()}{" "}
-            {updatedAtObj.toLocaleTimeString("tr-TR", {
+            {updatedAtObj.toLocaleTimeString("de-DE", {
               hour: "2-digit",
               minute: "2-digit",
             })}
