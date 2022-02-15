@@ -1,33 +1,45 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Categories from "../components/Categories";
 import Login from "../components/Login";
+import Logout from "../components/Logout";
 import Records from "../components/Records";
 
 import SignUp from "../components/SignUp";
-
-// const privateComponent = {
-//   categories: <Categories />,
-// };
+import { AppState } from "../store";
+import { isLoggedIn } from "../store/actions/userActions";
 
 export const AllRoutes = () => {
-  /*  const renderPrivate = (path: keyof typeof privateComponent) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      return <Route path={path} element={privateComponent[path]} />;
-    }
-    return <Route element={<Navigate to="/" />} />;
-  };
-  const token = false; */
+  const { data, loading, error } = useSelector((state: AppState) => state.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(isLoggedIn());
+  }, []);
   return (
     <div>
       <Routes>
-        <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/records" element={<Records />} />
-        {/*  {renderPrivate("categories")} */}
+        <Route path="/signup" element={<SignUp />} />
+        {data.username ? (
+          <React.Fragment>
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/records" element={<Records />} />
+            <Route path="/logout" element={<Logout />} />
+          </React.Fragment>
+        ) : (
+          <Route path="*" element={<Navigate to="/login" />} />
+        )}
       </Routes>
     </div>
   );
 };
+
+//  <Route path="/register" element={<SignUp />} />
+//             <Route path="/categories" element={<Categories />} />
+//             <Route path="/records" element={<Records />} />
+//             <Route path="/logout" element={<Logout />} />
+//              <Route path="/login" element={<Login />} />
+//             <Route path="/signup" element={<SignUp />} />

@@ -1,42 +1,20 @@
-import * as React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Layout } from "antd";
+import React from "react";
+import { AppHeader } from "./components/AppHeader";
 import { AllRoutes } from "./routes/AllRoutes";
-
-const { Header, Content, Footer } = Layout;
-
+const { Content, Footer } = Layout;
 function App() {
-  const navigate = useNavigate();
   return (
     <React.Fragment>
+      <AppHeader />
       <Layout>
-        <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item onClick={() => navigate("/login")} key="1">
-              login
-            </Menu.Item>
-            <Menu.Item onClick={() => navigate("/register")} key="2">
-              register
-            </Menu.Item>
-            <Menu.Item onClick={() => navigate("/categories")} key="3">
-              categories
-            </Menu.Item>
-          </Menu>
-        </Header>
         <Content
           className="site-layout"
           style={{ padding: "50px", marginTop: 64 }}
-        >
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-        </Content>
+        ></Content>
         <AllRoutes />
         <Footer style={{ textAlign: "center" }}>
-          Expense Tracker App @ React-Redux-TypeScript 2022
+          <h3> Expense Tracker App @ React-Redux-TypeScript 2022</h3>
         </Footer>
       </Layout>
     </React.Fragment>

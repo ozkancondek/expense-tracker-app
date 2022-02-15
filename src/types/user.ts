@@ -25,7 +25,7 @@ export interface LoginForm {
 //types for action
 
 //types of dispatch when user log in
-interface LGOIN_START {
+interface LOGIN_START {
   type: "LOGIN_START";
 }
 
@@ -35,10 +35,34 @@ interface LOGIN_SUCCESS {
   payload: User;
 }
 
-interface LGOIN_ERROR {
+interface LOGIN_ERROR {
   type: "LOGIN_ERROR";
 }
 
+interface IS_LOGGED_IN_START {
+  type: "IS_LOGGED_IN_START";
+}
+
+interface IS_LOGGED_IN_SUCCESS {
+  type: "IS_LOGGED_IN_SUCCESS";
+  payload: User;
+}
+
+interface IS_LOGGED_IN_ERROR {
+  type: "IS_LOGGED_IN_ERROR";
+}
+
+interface LOGOUT {
+  type: "LOGOUT";
+}
 //collect them all as useractions
-export type UserAction = LGOIN_START | LOGIN_SUCCESS | LGOIN_ERROR;
+export type UserAction =
+  | LOGIN_START
+  | LOGIN_SUCCESS
+  | LOGIN_ERROR
+  | IS_LOGGED_IN_START
+  | IS_LOGGED_IN_SUCCESS
+  | IS_LOGGED_IN_ERROR
+  | LOGOUT;
+
 export type UserDispatch = ThunkDispatch<UserState, void, UserAction>;
