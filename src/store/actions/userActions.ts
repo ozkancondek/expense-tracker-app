@@ -1,4 +1,4 @@
-//i want to save the user infos r´to redux
+//i want to save the user infos to redux
 
 import { LoginForm, User, UserDispatch } from "../../types/user";
 import api from "../../utils/api";

@@ -13,6 +13,8 @@ export interface AppState {
   records: RecordState;
 }
 
+//combine all reducers
+
 const rootReducer = combineReducers<AppState>({
   user: userReducer,
   categories: categoryReducer,
