@@ -14,14 +14,11 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data, error } = useSelector((state: AppState) => state.user);
+  console.log(error);
 
   const onFinish = (values: LoginForm) => {
     dispatch(login(values));
   };
-  //show me error
-  useEffect(() => {
-    error && showError(error);
-  }, [error]);
 
   //if logged in, give me message
   useEffect(() => {
@@ -37,38 +34,40 @@ function Login() {
   }, [data, navigate]);
 
   return (
-    <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      /*  onFinishFailed={onFinishFailed} */
-      autoComplete="off"
-    >
-      <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please Login</h2>
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
+    <div style={{ width: "60%" }}>
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        /*  onFinishFailed={onFinishFailed} */
+        autoComplete="off"
       >
-        <Input />
-      </Form.Item>
+        <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please Login</h2>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit" block>
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 

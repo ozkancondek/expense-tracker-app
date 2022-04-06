@@ -1,5 +1,6 @@
 import { Menu } from "antd";
 import { Header } from "antd/lib/layout/layout";
+import SubMenu from "antd/lib/menu/SubMenu";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +33,8 @@ export const AppHeader = () => {
             </React.Fragment>
           ) : loading ? null : (
             <React.Fragment>
+              <Menu.Item onClick={() => navigate("/")}>Home</Menu.Item>
+              <Menu.Item onClick={() => navigate("/about")}>About</Menu.Item>
               <Menu.Item onClick={() => navigate("/login")}>Login</Menu.Item>
               <Menu.Item onClick={() => navigate("/signup")}>Signup</Menu.Item>
             </React.Fragment>

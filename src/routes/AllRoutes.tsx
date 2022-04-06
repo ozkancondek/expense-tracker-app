@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { About } from "../components/About";
 import Categories from "../components/Categories";
 import Login from "../components/Login";
 import Logout from "../components/Logout";
@@ -24,6 +25,7 @@ export const AllRoutes: FC = () => {
     <div>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {data.username ? (

@@ -37,7 +37,7 @@ function SignUp() {
     }
   };
   return (
-    <div>
+    <div style={{ width: "60%" }}>
       <Form
         {...layout}
         name="nest-messages"
@@ -76,7 +76,7 @@ function SignUp() {
         </Form.Item>
 
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" block>
             Submit
           </Button>
         </Form.Item>
