@@ -11,11 +11,11 @@ function App() {
     <React.Fragment>
       <AppHeader />
       <Layout>
-        <Content
-          className="site-layout"
-          style={{ padding: "50px", marginTop: 64 }}
-        ></Content>
-        <AllRoutes />
+        <Content className="site-layout" style={{ padding: "50px" }}></Content>
+        <div style={{ height: "95vh" }}>
+          <AllRoutes />
+        </div>
+
         <Footer style={{ textAlign: "center" }}>
           <h3> Expense Tracker App @ React-Redux-TypeScript 2022</h3>
         </Footer>
