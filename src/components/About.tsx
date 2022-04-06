@@ -24,7 +24,17 @@ export const About = () => {
       <h4>Project created to better understanding of redux with typescript</h4>
       <h4>
         User can login to account, add expenses, manage expenses with categories
-      </h4>{" "}
+      </h4>
+      <h4>
+        Go to{" "}
+        <a
+          href="https://github.com/ozkancondek/expense-tracker-app"
+          target="_blank"
+        >
+          link here
+        </a>
+        to see Github
+      </h4>
     </div>
   );
 };

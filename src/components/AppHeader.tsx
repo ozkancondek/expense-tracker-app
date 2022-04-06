@@ -21,20 +21,20 @@ export const AppHeader = () => {
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal">
+          <Menu.Item onClick={() => navigate("/")}>Home</Menu.Item>
+          <Menu.Item onClick={() => navigate("/about")}>About</Menu.Item>
           {data.username ? (
             <React.Fragment>
-              <Menu.Item onClick={() => navigate("/logout")}>Logout</Menu.Item>
               <Menu.Item onClick={() => navigate("/categories")}>
                 Categories
               </Menu.Item>
               <Menu.Item onClick={() => navigate("/records")}>
                 Records
               </Menu.Item>
+              <Menu.Item onClick={() => navigate("/logout")}>Logout</Menu.Item>
             </React.Fragment>
           ) : loading ? null : (
             <React.Fragment>
-              <Menu.Item onClick={() => navigate("/")}>Home</Menu.Item>
-              <Menu.Item onClick={() => navigate("/about")}>About</Menu.Item>
               <Menu.Item onClick={() => navigate("/login")}>Login</Menu.Item>
               <Menu.Item onClick={() => navigate("/signup")}>Signup</Menu.Item>
             </React.Fragment>

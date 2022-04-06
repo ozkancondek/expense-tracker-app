@@ -1,7 +1,9 @@
 import { Button } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Main = () => {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -21,7 +23,11 @@ export const Main = () => {
       }}
     >
       {" "}
-      <Button type="primary" style={{ height: "50px" }}>
+      <Button
+        type="primary"
+        style={{ height: "50px" }}
+        onClick={() => navigate("/login")}
+      >
         {" "}
         Explore more
       </Button>

@@ -13,8 +13,7 @@ import { showSuccess } from "../utils/showSuccess";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data, error } = useSelector((state: AppState) => state.user);
-  console.log(error);
+  const { data } = useSelector((state: AppState) => state.user);
 
   const onFinish = (values: LoginForm) => {
     dispatch(login(values));

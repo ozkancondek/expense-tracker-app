@@ -156,7 +156,7 @@ function Records() {
         <div
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "center",
             marginBottom: "10px",
           }}
         >
